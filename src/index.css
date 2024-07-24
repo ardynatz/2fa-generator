@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  @apply bg-gradient-to-br from-slate-950/95 via-slate-950/100 to-slate-950 bg-[length:400%_400%] animate-gradient;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.shine-effect {
+  --shine-deg: 45deg;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    var(--shine-deg),
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  background-repeat: no-repeat;
+  background-position: -100% 0, 0 0;
+  background-size: 250% 250%, 100% 100%;
+  transition: background-position 0s ease;
+}
+
+.shine-effect:hover {
+  background-position: 200% 0, 0 0;
+  transition-duration: 1.5s;
+  animation: focusColor 2s forwards;
+  outline: none;
+}
+
+.shine-effect:focus {
+  background-color: rgb(2 6 23 / var(--tw-bg-opacity));
+  outline: none;
+}
+
+.shine-effect:active {
+  animation: clickMove 0.2s ease;
+}
+
+@keyframes focusColor {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgba(58, 58, 58, 0.5);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
