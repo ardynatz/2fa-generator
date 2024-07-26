@@ -10,6 +10,15 @@ export default function App() {
 
   const generateTOTP = () => {
     try {
+      if (!secret) {
+        alert("Please enter a secret key.");
+        return;
+      }
+      if (secret.length < 16) {
+        alert("Secret key must be at least 16 characters long.");
+        return;
+      }
+
       const key = base32.decode(secret.replace(/\s+/g, "").toUpperCase());
       const epoch = Math.round(new Date().getTime() / 1000.0);
       const time = Math.floor(epoch / 30);
@@ -40,9 +49,6 @@ export default function App() {
       .writeText(totp)
       .then(() => {
         alert("2FA Code copied to clipboard!");
-      })
-      .catch((err) => {
-        alert("Failed to copy 2FA Code. Please try again.");
       });
     }
   };
