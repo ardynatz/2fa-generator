@@ -1,30 +1,50 @@
-# React + TypeScript + Vite
+# 2FA Generator
+"2FA Generator" is a simple web application that allows users to generate 2FA (Two-Factor Authentication) codes from their 2FA secret key, similar to the functionality provided by 2fa.live.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Development Environment Setup
 
-Currently, two official plugins are available:
+### Prerequisites
+- [Node.js](https://nodejs.org/) (version 16 or higher)
+- [npm](https://www.npmjs.com/) (version 8 or higher)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+### 1. Clone the repository
+```bash
+git clone https://github.com/ardynatz/2fa-generator.git
+cd 2fa-generator
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Start the development server
+```bash
+npm run dev
+```
+The development server will start, and you can access the application at `http://localhost:5173`.
+
+## Production Deployment
+
+### Build the production version
+```bash
+npm run build
+```
+
+### Build and run the Docker container
+```bash
+docker build -t 2fa-generator .
+docker run -d -p 80:80 -p 443:443 2fa-generator
+```
+
+Now the production version of the application is available at `http://localhost` and `https://localhost`.
+
+For deployment to a hosting platform (e.g., AWS ECS, Azure Container Instances, Google Cloud Run, Heroku), the general steps are:
+
+1. Push the Docker image to a container registry.
+2. Configure the hosting platform to pull the Docker image and run the container.
+3. Set the appropriate environment variables for the production environment.
+
+Refer to the hosting platform's documentation for specific deployment instructions.
+
+I hope this guide helps you get your "2FA Generator" application up and running in production! If you have any further questions or need assistance, don't hesitate to reach out. :)
